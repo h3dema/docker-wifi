@@ -26,12 +26,14 @@ CONFIG_DRIVER_NL80211=y
 #
 #CFLAGS += -I$<path to libnl include files>
 #LIBS += -L$<path to libnl library files>
+#CFLAGS += -I/usr/include
+#LIBS += -L/usr/lib/x86_64-linux-gnu/
 
 # Use libnl v2.0 (or 3.0) libraries.
 #CONFIG_LIBNL20=y
 
 # Use libnl 3.2 libraries (if this is selected, CONFIG_LIBNL20 is ignored)
-CONFIG_LIBNL32=y
+#CONFIG_LIBNL32=y
 
 
 # Driver interface for FreeBSD net80211 layer (e.g., Atheros driver)
