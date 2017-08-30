@@ -21,19 +21,21 @@ RUN cd /home/hostap && \
     make  && \
     make install
 
+RUN apt-get -y wpasupplicant
+
 # compile and install wpa_supplicant
-RUN cd /home/hostap/wpa_supplicant && \
-    cp defconfig .config && \
-    echo "CONFIG_IEEE80211R=y" >> .config && \
-    echo "CONFIG_IEEE80211R_AP=y" >> .config && \
-    echo "CONFIG_IEEE80211N=y" >> .config && \
-    echo "CONFIG_IEEE80211AC=y" >> .config && \
-    echo "CONFIG_AP=y" >> .config && \
-    echo "CONFIG_P2P=y" >> .config && \
-    echo "CONFIG_WPS=y" >> .config && \
-    echo "CONFIG_WPS2=y" >> .config && \
-    make && \
-    make install
+#RUN cd /home/hostap/wpa_supplicant && \
+#    cp defconfig .config && \
+#    echo "CONFIG_IEEE80211R=y" >> .config && \
+#    echo "CONFIG_IEEE80211R_AP=y" >> .config && \
+#    echo "CONFIG_IEEE80211N=y" >> .config && \
+#    echo "CONFIG_IEEE80211AC=y" >> .config && \
+#    echo "CONFIG_AP=y" >> .config && \
+#    echo "CONFIG_P2P=y" >> .config && \
+#    echo "CONFIG_WPS=y" >> .config && \
+#    echo "CONFIG_WPS2=y" >> .config && \
+#    make && \
+#    make install
     
 ADD hostapd/hostapd.conf /home/hostap/hostapd.conf
 ADD wpa/wpa_supplicant.conf /home/hostap/wpa_supplicant.conf
