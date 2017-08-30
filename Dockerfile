@@ -1,18 +1,24 @@
-FROM docker.io/ubuntu:16.04
+FROM ubuntu:14.04
 
 RUN apt-get update && \
-    apt-get -qy install apt-utils curl libssl-dev \
-#        libnl-dev libnl1 \
-        libnl-3-dev libnl-genl-3-dev \
-    	build-essential python python-pip make cmake \
-        ca-certificates net-tools iputils-ping usbutils\
-        vim pkg-config nano openssh-client openssh-server git \
-        bridge-utils iptables wireless-tools man wpasupplicant  
+    apt-get -qy install apt-utils curl libssl-dev && \
+    apt-get -y build-essential make cmake git pkg-config man && \
+    apt-get -y libnl-dev libnl1 && \
+    apt-get -y python python-pip && \
+    apt-get -y ca-certificates net-tools iputils-ping usbutils && \
+    apt-get -y vim openssh-client openssh-server && \
+    apt-get -y bridge-utils iptables wireless-tools wpasupplicant  
 
 RUN git clone git://w1.fi/srv/git/hostap.git /home/hostap
 ADD .config /home/hostap/hostapd/.config
 RUN cd /home/hostap/hostapd && make && make install
-RUN cd /home
-RUN wget -c https://www.kernel.org/pub/software/network/iw/iw-4.9.tar.gz
-RUN tar zxvf iw-4.9.tar.gz
-RUN cd iw-4.9/ && make && make install
+
+# compile and install iw
+RUN cd /home/hostap && \
+    wget -c https://www.kernel.org/pub/software/network/iw/iw-4.9.tar.gz && \
+    tar zxvf iw-4.9.tar.gz && \
+    cd iw-4.9  && \
+    make  && \
+    make install
+
+# TODO: compile and install wpa_supplicant
