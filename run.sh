@@ -2,6 +2,7 @@
 
 DOCKER=`docker ps -f name=wifi-container | wc -l`
 
+# checks if the container is already running
 if (( $DOCKER == 1 ))
 then
     /opt/docker-wifi/pidbind.sh &
