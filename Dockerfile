@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get -qy install apt-utils curl libssl-dev && \
     apt-get -y build-essential make cmake git pkg-config man && \
     apt-get -y libnl-dev libnl1 && \
-    apt-get -y python python-pip && \
+    apt-get -y python python-pip
 
 RUN apt-get -y ca-certificates net-tools iputils-ping usbutils
 RUN apt-get -y vim openssh-client openssh-server
