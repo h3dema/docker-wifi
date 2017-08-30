@@ -22,3 +22,7 @@ RUN cd /home/hostap && \
     make install
 
 # TODO: compile and install wpa_supplicant
+
+
+ADD hostapd/hostapd.conf /home/hostap/hostapd.conf
+ADD wpa/wpa_supplicant.conf /home/hostap/wpa_supplicant.conf
