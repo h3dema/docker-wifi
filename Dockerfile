@@ -5,7 +5,8 @@ RUN apt-get update && \
     apt-get -y build-essential make cmake git pkg-config man && \
     apt-get -y libnl-dev libnl1 && \
     apt-get -y python python-pip && \
-    apt-get -y ca-certificates net-tools iputils-ping usbutils && \
+
+RUN apt-get -y ca-certificates net-tools iputils-ping usbutils
     apt-get -y vim openssh-client openssh-server && \
     apt-get -y bridge-utils iptables wireless-tools wpasupplicant
 
