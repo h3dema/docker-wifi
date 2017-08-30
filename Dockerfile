@@ -2,12 +2,12 @@ FROM ubuntu:14.04
 
 RUN apt-get update && \
     apt-get -qy install apt-utils curl libssl-dev && \
-    apt-get -y build-essential make cmake git pkg-config man && \
-    apt-get -y libnl-dev libnl1 && \
-    apt-get -y python python-pip
+    apt-get -y install build-essential make cmake git pkg-config man && \
+    apt-get -y install libnl-dev libnl1
 
-RUN apt-get -y ca-certificates vim openssh-client openssh-server
-RUN apt-get -y net-tools iputils-ping usbutils bridge-utils iptables wireless-tools wpasupplicant
+RUN apt-get -y install python python-pip
+RUN apt-get -y install ca-certificates vim openssh-client openssh-server
+RUN apt-get -y install net-tools iputils-ping usbutils bridge-utils iptables wireless-tools wpasupplicant
 
 RUN git clone git://w1.fi/srv/git/hostap.git /home/hostap
 ADD hostapd/config /home/hostap/hostapd/.config
