@@ -9,7 +9,7 @@ RUN apt-get -y install python python-pip
 RUN apt-get -y install ca-certificates vim openssh-client openssh-server
 RUN apt-get -y install net-tools iputils-ping usbutils bridge-utils iptables wireless-tools 
 
-RUN git clone git://w1.fi/srv/git/hostap.git /home/hostap
+RUN git clone git://w1.fi/srv/git/hostap.git /home/compile
 ADD hostapd/config /home/compile/hostapd/.config
 RUN cd /home/compile/hostapd && \
     make && \
