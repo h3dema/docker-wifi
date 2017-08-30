@@ -7,8 +7,8 @@ RUN apt-get update && \
     apt-get -y python python-pip && \
 
 RUN apt-get -y ca-certificates net-tools iputils-ping usbutils
-    apt-get -y vim openssh-client openssh-server && \
-    apt-get -y bridge-utils iptables wireless-tools wpasupplicant
+RUN apt-get -y vim openssh-client openssh-server
+RUN apt-get -y bridge-utils iptables wireless-tools wpasupplicant
 
 RUN git clone git://w1.fi/srv/git/hostap.git /home/hostap
 ADD hostapd/config /home/hostap/hostapd/.config
