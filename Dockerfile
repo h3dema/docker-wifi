@@ -7,10 +7,10 @@ RUN apt-get update && \
     apt-get -y python python-pip && \
     apt-get -y ca-certificates net-tools iputils-ping usbutils && \
     apt-get -y vim openssh-client openssh-server && \
-    apt-get -y bridge-utils iptables wireless-tools wpasupplicant  
+    apt-get -y bridge-utils iptables wireless-tools wpasupplicant
 
 RUN git clone git://w1.fi/srv/git/hostap.git /home/hostap
-ADD .config /home/hostap/hostapd/.config
+ADD hostapd/config /home/hostap/hostapd/.config
 RUN cd /home/hostap/hostapd && make && make install
 
 # compile and install iw
