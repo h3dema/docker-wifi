@@ -7,7 +7,7 @@ RUN apt-get update && \
 
 RUN apt-get -y install python python-pip
 RUN apt-get -y install ca-certificates vim openssh-client openssh-server
-RUN apt-get -y install net-tools iputils-ping usbutils bridge-utils iptables wireless-tools wpasupplicant
+RUN apt-get -y install net-tools iputils-ping usbutils bridge-utils iptables wireless-tools 
 
 RUN git clone git://w1.fi/srv/git/hostap.git /home/hostap
 ADD hostapd/config /home/hostap/hostapd/.config
@@ -21,8 +21,19 @@ RUN cd /home/hostap && \
     make  && \
     make install
 
-# TODO: compile and install wpa_supplicant
-
-
+# compile and install wpa_supplicant
+RUN cd /home/hostap/wpa_supplicant && \
+    cp defconfig .config && \
+    echo "CONFIG_IEEE80211R=y" >> .config && \
+    echo "CONFIG_IEEE80211R_AP=y" >> .config && \
+    echo "CONFIG_IEEE80211N=y" >> .config && \
+    echo "CONFIG_IEEE80211AC=y" >> .config && \
+    echo "CONFIG_AP=y" >> .config && \
+    echo "CONFIG_P2P=y" >> .config && \
+    echo "CONFIG_WPS=y" >> .config && \
+    echo "CONFIG_WPS2=y" >> .config && \
+    make && \
+    make install
+    
 ADD hostapd/hostapd.conf /home/hostap/hostapd.conf
 ADD wpa/wpa_supplicant.conf /home/hostap/wpa_supplicant.conf
