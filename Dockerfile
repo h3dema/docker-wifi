@@ -24,6 +24,7 @@ RUN cd /home/compile && \
     make install
 
 RUN apt-get install -y wpasupplicant
+RUN apt-get install -y rfkill
 
 # compile and install wpa_supplicant
 #RUN cd /home/compile/wpa_supplicant && \
