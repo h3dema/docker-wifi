@@ -26,7 +26,8 @@ sudo ln -s /proc/$PID/ns/net /var/run/netns/$PID
 sudo iw phy phy0 set netns $PID
 
 #Bring up the interface inside the container
-sudo ip netns exec $PID ip link set wlp2s0 up
+INTF_NAME="wlan0"
+sudo ip netns exec $PID ip link set $INTF_NAME up
 
 #After these steps, the interface will be shown inside the container.
 #Run 'ifconfig' and you will see wlp2s0, with no IP address set, but up and running	
