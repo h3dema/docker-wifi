@@ -13,6 +13,9 @@ Use docker build to download the dockerfile and the other files from this reposi
 After the cointainer is build, you should run using ''run.sh''.
 
 ```bash
+$ cd /opt
+$ git clone /https://github.com/h3dema/docker-wifi.git
+$ cd docker-wifi
 $ docker build -t wifi-container github.com/h3dema/docker-wifi
 $ bash run.sh
 ```
