@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 RUN apt-get update && \
-    apt-get -qy install apt-utils curl libssl-dev && \
+    apt-get -y install apt-utils curl libssl-dev && \
     apt-get -y install build-essential make cmake git pkg-config man && \
     apt-get -y install libnl-dev libnl1
 
